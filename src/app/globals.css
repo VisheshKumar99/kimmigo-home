@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — warm, soft, premium */
+    --background: 36 50% 99%;
+    --foreground: 240 24% 14%;
+
+    --muted: 240 20% 96%;
+    --muted-foreground: 240 10% 42%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 24% 14%;
+
+    --primary: 250 84% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 14 90% 64%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 18% 90%;
+    --ring: 250 84% 62%;
+
+    --font-sans: var(--font-inter);
+    --font-display: var(--font-sora);
+  }
+
+  .dark {
+    --background: 245 32% 8%;
+    --foreground: 240 30% 96%;
+
+    --muted: 244 24% 16%;
+    --muted-foreground: 240 14% 68%;
+
+    --card: 245 28% 12%;
+    --card-foreground: 240 30% 96%;
+
+    --primary: 250 86% 70%;
+    --primary-foreground: 245 40% 10%;
+
+    --accent: 14 90% 66%;
+    --accent-foreground: 245 40% 10%;
+
+    --border: 244 20% 22%;
+    --ring: 250 86% 70%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.22);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grid {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background-color: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+}
+
+/* Respect reduced-motion for CSS animations; Framer Motion handled in-code */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
